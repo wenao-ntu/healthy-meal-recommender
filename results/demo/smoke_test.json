@@ -1,0 +1,57 @@
+{
+  "application": {
+    "entrypoint": "app/streamlit_app.py",
+    "framework": "Streamlit",
+    "framework_version": "1.63.0",
+    "language": "English",
+    "local_only": true
+  },
+  "checks": {
+    "default_streamlit_render_has_no_exception": true,
+    "low_target_explanation_visible": true,
+    "low_target_overlap_is_100_percent": true,
+    "low_target_quota_is_zero": true,
+    "low_target_streamlit_render_has_no_exception": true,
+    "no_gap_preserves_preference_order": true,
+    "repeated_recommendation_identical": true,
+    "ten_unique_real_candidates": true
+  },
+  "data_path": {
+    "anonymous_users": 1114,
+    "candidate_generator": "NeuMF Standard",
+    "candidate_rows": 111400,
+    "candidates_per_user": 100,
+    "contains_patient_pii": false,
+    "meal_catalog_rows": 3817,
+    "uses_live_gap_rank_function": true
+  },
+  "default_scenario": {
+    "adaptive_quota": 4,
+    "after_goal_rate": 0.4,
+    "after_mean_health": 0.3532738095238094,
+    "before_goal_rate": 0.2,
+    "before_mean_health": 0.30922619047619054,
+    "promoted_meals": 2,
+    "target": 0.36,
+    "top10_overlap": 0.8,
+    "train_only_baseline": 0.3080357142857142,
+    "user_id": 329
+  },
+  "demo_smoke_schema_version": 1,
+  "ui_structure": {
+    "dataframes": 4,
+    "metrics": 10,
+    "selectboxes": 2,
+    "sliders": 1,
+    "tabs": 3,
+    "title": [
+      "Healthy Meal Navigator"
+    ]
+  },
+  "visual_asset": {
+    "contains_text": false,
+    "generated_for_this_project": true,
+    "path": "app/assets/healthy-meal-banner.png",
+    "sha256": "7f456fc1bef583d6f94b135f8853722d706a1e7e585846c2e831e923c89aa817"
+  }
+}

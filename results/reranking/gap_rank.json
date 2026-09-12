@@ -1,0 +1,1125 @@
+{
+  "benchmark_goal": {
+    "clinical_threshold": false,
+    "definition": "75th percentile of health utility among train-seen meals",
+    "interpretation": "offline wellness ranking target, not medical advice",
+    "quantile": 0.75,
+    "source_scope": "meal_catalog rows with train_interactions > 0",
+    "value": 0.36011904761904745
+  },
+  "gap_rank_formula": {
+    "effective_target": "min(target, maximum candidate health utility)",
+    "feasibility_ratio": "max(0, effective target - baseline) / user gap",
+    "gap_reference": 0.1,
+    "intervention_intensity": "max_quota_share * min(user_gap / 0.10, 1) * feasibility ratio",
+    "minimal_change_rule": "if current Top-10 misses the quota, promote the highest-preference target meals and replace the lowest-ranked non-target meals; preserve preference order otherwise",
+    "target_quota": "ceil(10 * intervention intensity), capped by feasible target candidates",
+    "user_gap": "max(0, target - train-only user baseline)"
+  },
+  "health_utility": {
+    "formula": "0.5 * clip((12 - FSA) / 8) + 0.5 * clip(WHO / 7)",
+    "fsa_direction": "lower is healthier; canonical range 4..12",
+    "higher_is_healthier": true,
+    "range": [
+      0.0,
+      1.0
+    ],
+    "weights": {
+      "fsa": 0.5,
+      "who": 0.5
+    },
+    "who_direction": "higher is healthier; canonical range 0..7"
+  },
+  "limitations": [
+    "The composite health utility is an interpretable project proxy, not a clinical score.",
+    "Offline goal satisfaction does not establish real-world dietary or health outcomes.",
+    "Reranking can only choose from the preference model's Top-100 candidates."
+  ],
+  "method": {
+    "candidate_generator": "NeuMF Standard",
+    "candidate_k": 100,
+    "final_k": 10,
+    "name": "GAP Rank",
+    "purpose": "user health-goal-gap adaptive reranking"
+  },
+  "protocol": {
+    "hard_filter_fallback": "if fewer than 10 candidates meet target, fill remaining slots by preference",
+    "labels_used_only_by_evaluator": true,
+    "preference_metrics_reproduced_with_absolute_tolerance": 1e-06,
+    "test_purpose": "one final evaluation after parameters are frozen",
+    "user_baselines": "training interactions only",
+    "validation_purpose": "parameter selection and method checking"
+  },
+  "provenance": {
+    "candidate_manifest": "results/candidates/neumf_standard_top100.json",
+    "candidate_manifest_sha256": "ce7149bd3a5d6f4ec62c015f711e9dae7612678015a78be289fc3bde89ed1b10",
+    "meal_catalog_sha256": "eaa3f8d3c2a2d0b43c961f51bbcfadc5aa14798cbc73feb6e612507227926ce4",
+    "neumf_result_sha256": "be8e6b48f69d3376c66b5ba032af4a2f7151808dcb9c119bca190d4d377e60f6",
+    "user_baselines_sha256": "91aebca8172d3c0018fb4d5cb006774807f8ccf99caed17932602a9ca6cc0137"
+  },
+  "recommendation_samples": [
+    {
+      "gap": 0.0,
+      "gap_rank": [
+        {
+          "courses": [
+            "Tzatziki Sauce",
+            "Taco Seasoning I",
+            "Good Old Fashioned Pancakes"
+          ],
+          "fsa_score": 6.66666666666667,
+          "health_utility": 0.49999999999999956,
+          "meal_id": 935,
+          "preference_score": 0.726602852345,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Awesome Slow Cooker Pot Roast",
+            "Banana Pudding IV"
+          ],
+          "fsa_score": 8.66666666666667,
+          "health_utility": 0.32738095238095244,
+          "meal_id": 1445,
+          "preference_score": 0.686243355274,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Cocktail Meatballs",
+            "Taco Seasoning I",
+            "The Best Rolled Sugar Cookies"
+          ],
+          "fsa_score": 7.66666666666667,
+          "health_utility": 0.413690476190476,
+          "meal_id": 986,
+          "preference_score": 0.67944675684,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Salsa Chicken",
+            "Chewy Chocolate Chip Oatmeal Cookies"
+          ],
+          "fsa_score": 8.33333333333333,
+          "health_utility": 0.32440476190476186,
+          "meal_id": 195,
+          "preference_score": 0.678731799126,
+          "who_score": 1.33333333333333
+        },
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Absolutely Ultimate Potato Soup",
+            "Creamy Rice Pudding"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.36011904761904745,
+          "meal_id": 1771,
+          "preference_score": 0.676933944225,
+          "who_score": 3.0
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Awesome Slow Cooker Pot Roast",
+            "Jamie's Cranberry Spinach Salad"
+          ],
+          "fsa_score": 8.33333333333333,
+          "health_utility": 0.3720238095238097,
+          "meal_id": 279,
+          "preference_score": 0.669552922249,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Beef and Bean Chimichangas",
+            "Beth's Spicy Oatmeal Raisin Cookies"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.2916666666666664,
+          "meal_id": 2921,
+          "preference_score": 0.634094893932,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Awesome Slow Cooker Pot Roast",
+            "Beth's Spicy Oatmeal Raisin Cookies"
+          ],
+          "fsa_score": 8.0,
+          "health_utility": 0.3690476190476193,
+          "meal_id": 466,
+          "preference_score": 0.633795380592,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Yummy Honey Chicken Kabobs",
+            "Mouse's Macaroni and Cheese",
+            "Chewy Chocolate Chip Oatmeal Cookies"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.21726190476190457,
+          "meal_id": 425,
+          "preference_score": 0.621316432953,
+          "who_score": 1.0
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Burrito Pie",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 8.66666666666667,
+          "health_utility": 0.351190476190476,
+          "meal_id": 1017,
+          "preference_score": 0.614388227463,
+          "who_score": 2.0
+        }
+      ],
+      "intervention_intensity": 0.0,
+      "label": "no_gap",
+      "preference_only": [
+        {
+          "courses": [
+            "Tzatziki Sauce",
+            "Taco Seasoning I",
+            "Good Old Fashioned Pancakes"
+          ],
+          "fsa_score": 6.66666666666667,
+          "health_utility": 0.49999999999999956,
+          "meal_id": 935,
+          "preference_score": 0.726602852345,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Awesome Slow Cooker Pot Roast",
+            "Banana Pudding IV"
+          ],
+          "fsa_score": 8.66666666666667,
+          "health_utility": 0.32738095238095244,
+          "meal_id": 1445,
+          "preference_score": 0.686243355274,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Cocktail Meatballs",
+            "Taco Seasoning I",
+            "The Best Rolled Sugar Cookies"
+          ],
+          "fsa_score": 7.66666666666667,
+          "health_utility": 0.413690476190476,
+          "meal_id": 986,
+          "preference_score": 0.67944675684,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Salsa Chicken",
+            "Chewy Chocolate Chip Oatmeal Cookies"
+          ],
+          "fsa_score": 8.33333333333333,
+          "health_utility": 0.32440476190476186,
+          "meal_id": 195,
+          "preference_score": 0.678731799126,
+          "who_score": 1.33333333333333
+        },
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Absolutely Ultimate Potato Soup",
+            "Creamy Rice Pudding"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.36011904761904745,
+          "meal_id": 1771,
+          "preference_score": 0.676933944225,
+          "who_score": 3.0
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Awesome Slow Cooker Pot Roast",
+            "Jamie's Cranberry Spinach Salad"
+          ],
+          "fsa_score": 8.33333333333333,
+          "health_utility": 0.3720238095238097,
+          "meal_id": 279,
+          "preference_score": 0.669552922249,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Beef and Bean Chimichangas",
+            "Beth's Spicy Oatmeal Raisin Cookies"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.2916666666666664,
+          "meal_id": 2921,
+          "preference_score": 0.634094893932,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Awesome Slow Cooker Pot Roast",
+            "Beth's Spicy Oatmeal Raisin Cookies"
+          ],
+          "fsa_score": 8.0,
+          "health_utility": 0.3690476190476193,
+          "meal_id": 466,
+          "preference_score": 0.633795380592,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Yummy Honey Chicken Kabobs",
+            "Mouse's Macaroni and Cheese",
+            "Chewy Chocolate Chip Oatmeal Cookies"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.21726190476190457,
+          "meal_id": 425,
+          "preference_score": 0.621316432953,
+          "who_score": 1.0
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Burrito Pie",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 8.66666666666667,
+          "health_utility": 0.351190476190476,
+          "meal_id": 1017,
+          "preference_score": 0.614388227463,
+          "who_score": 2.0
+        }
+      ],
+      "target": 0.36011904761904745,
+      "top10_overlap": 1.0,
+      "train_only_health_baseline": 0.3720238095238097,
+      "user_id": 30
+    },
+    {
+      "gap": 0.05208333333333326,
+      "gap_rank": [
+        {
+          "courses": [
+            "Marinated Grilled Shrimp",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.33333333333333,
+          "health_utility": 0.33333333333333326,
+          "meal_id": 20,
+          "preference_score": 0.849697351456,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Yummy Sweet Potato Casserole",
+            "The Best Rolled Sugar Cookies"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.24107142857142816,
+          "meal_id": 2409,
+          "preference_score": 0.777276933193,
+          "who_score": 1.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Slow Cooker Beef Stew I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.2916666666666664,
+          "meal_id": 75,
+          "preference_score": 0.776616275311,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Delicious Ham and Potato Soup",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.3154761904761907,
+          "meal_id": 957,
+          "preference_score": 0.774253368378,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.2916666666666664,
+          "meal_id": 391,
+          "preference_score": 0.772162079811,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Garlic Mashed Potatoes Secret Recipe",
+            "Peanut Butter Cup Cookies"
+          ],
+          "fsa_score": 9.33333333333333,
+          "health_utility": 0.28571428571428614,
+          "meal_id": 18,
+          "preference_score": 0.743706166744,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Delicious Ham and Potato Soup",
+            "Easy Pumpkin Muffins"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.36011904761904745,
+          "meal_id": 1571,
+          "preference_score": 0.712231993675,
+          "who_score": 3.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Taco Seasoning I",
+            "Peanut Butter Cup Cookies"
+          ],
+          "fsa_score": 7.66666666666667,
+          "health_utility": 0.43749999999999956,
+          "meal_id": 360,
+          "preference_score": 0.698489069939,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Hummus III",
+            "Delicious Ham and Potato Soup",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 8.33333333333333,
+          "health_utility": 0.4672619047619047,
+          "meal_id": 847,
+          "preference_score": 0.656998097897,
+          "who_score": 3.33333333333333
+        },
+        {
+          "courses": [
+            "Marinated Grilled Shrimp",
+            "Pizza Dough I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 7.66666666666667,
+          "health_utility": 0.508928571428571,
+          "meal_id": 665,
+          "preference_score": 0.646481454372,
+          "who_score": 3.33333333333333
+        }
+      ],
+      "intervention_intensity": 0.31249999999999956,
+      "label": "median_positive_gap",
+      "preference_only": [
+        {
+          "courses": [
+            "Marinated Grilled Shrimp",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.33333333333333,
+          "health_utility": 0.33333333333333326,
+          "meal_id": 20,
+          "preference_score": 0.849697351456,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Yummy Sweet Potato Casserole",
+            "The Best Rolled Sugar Cookies"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.24107142857142816,
+          "meal_id": 2409,
+          "preference_score": 0.777276933193,
+          "who_score": 1.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Slow Cooker Beef Stew I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.2916666666666664,
+          "meal_id": 75,
+          "preference_score": 0.776616275311,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Delicious Ham and Potato Soup",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.3154761904761907,
+          "meal_id": 957,
+          "preference_score": 0.774253368378,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.2916666666666664,
+          "meal_id": 391,
+          "preference_score": 0.772162079811,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Garlic Mashed Potatoes Secret Recipe",
+            "Peanut Butter Cup Cookies"
+          ],
+          "fsa_score": 9.33333333333333,
+          "health_utility": 0.28571428571428614,
+          "meal_id": 18,
+          "preference_score": 0.743706166744,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Marinated Grilled Shrimp",
+            "World's Best Lasagna",
+            "Banana Banana Bread"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.288690476190476,
+          "meal_id": 192,
+          "preference_score": 0.717089772224,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Grilled Salmon I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.3333333333333,
+          "health_utility": 0.2470238095238116,
+          "meal_id": 377,
+          "preference_score": 0.716254234314,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Delicious Ham and Potato Soup",
+            "Easy Pumpkin Muffins"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.36011904761904745,
+          "meal_id": 1571,
+          "preference_score": 0.712231993675,
+          "who_score": 3.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Taco Seasoning I",
+            "Peanut Butter Cup Cookies"
+          ],
+          "fsa_score": 7.66666666666667,
+          "health_utility": 0.43749999999999956,
+          "meal_id": 360,
+          "preference_score": 0.698489069939,
+          "who_score": 2.33333333333333
+        }
+      ],
+      "target": 0.36011904761904745,
+      "top10_overlap": 0.8,
+      "train_only_health_baseline": 0.3080357142857142,
+      "user_id": 329
+    },
+    {
+      "gap": 0.165178571428571,
+      "gap_rank": [
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.2916666666666664,
+          "meal_id": 391,
+          "preference_score": 0.912288546562,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Best Chocolate Chip Cookies"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.2440476190476193,
+          "meal_id": 216,
+          "preference_score": 0.866796255112,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Banana Sour Cream Bread"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.26785714285714285,
+          "meal_id": 947,
+          "preference_score": 0.857886254787,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Enchiladas II",
+            "Banana Banana Bread"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.288690476190476,
+          "meal_id": 894,
+          "preference_score": 0.853194117546,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Delicious Ham and Potato Soup",
+            "Creamy Rice Pudding"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.36011904761904745,
+          "meal_id": 146,
+          "preference_score": 0.704085350037,
+          "who_score": 3.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Taco Seasoning I",
+            "Banana Sour Cream Bread"
+          ],
+          "fsa_score": 8.0,
+          "health_utility": 0.4404761904761907,
+          "meal_id": 474,
+          "preference_score": 0.698292195797,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Mouth-Watering Stuffed Mushrooms",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.0,
+          "health_utility": 0.3779761904761907,
+          "meal_id": 1611,
+          "preference_score": 0.688485264778,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Mom's Zucchini Bread",
+            "Taco Seasoning I",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 8.0,
+          "health_utility": 0.4404761904761907,
+          "meal_id": 725,
+          "preference_score": 0.660278379917,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Pizza Dough I",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 8.66666666666667,
+          "health_utility": 0.42261904761904745,
+          "meal_id": 42,
+          "preference_score": 0.657944977283,
+          "who_score": 3.0
+        },
+        {
+          "courses": [
+            "Mom's Zucchini Bread",
+            "Taco Seasoning I",
+            "Best Chocolate Chip Cookies"
+          ],
+          "fsa_score": 7.66666666666667,
+          "health_utility": 0.43749999999999956,
+          "meal_id": 857,
+          "preference_score": 0.636944174767,
+          "who_score": 2.33333333333333
+        }
+      ],
+      "intervention_intensity": 0.6,
+      "label": "largest_gap",
+      "preference_only": [
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.2916666666666664,
+          "meal_id": 391,
+          "preference_score": 0.912288546562,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Best Chocolate Chip Cookies"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.2440476190476193,
+          "meal_id": 216,
+          "preference_score": 0.866796255112,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Banana Sour Cream Bread"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.26785714285714285,
+          "meal_id": 947,
+          "preference_score": 0.857886254787,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Enchiladas II",
+            "Banana Banana Bread"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.288690476190476,
+          "meal_id": 894,
+          "preference_score": 0.853194117546,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Slow Cooker Beef Stew I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.2916666666666664,
+          "meal_id": 75,
+          "preference_score": 0.846972227097,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Slow Cooker Beef Stew I",
+            "Banana Banana Bread"
+          ],
+          "fsa_score": 9.66666666666667,
+          "health_utility": 0.288690476190476,
+          "meal_id": 34,
+          "preference_score": 0.844782233238,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Enchiladas II",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 10.3333333333333,
+          "health_utility": 0.2470238095238116,
+          "meal_id": 694,
+          "preference_score": 0.820440888405,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Grilled Salmon I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.3333333333333,
+          "health_utility": 0.2470238095238116,
+          "meal_id": 377,
+          "preference_score": 0.799115002155,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Awesome Slow Cooker Pot Roast",
+            "Banana Banana Bread"
+          ],
+          "fsa_score": 9.33333333333333,
+          "health_utility": 0.28571428571428614,
+          "meal_id": 376,
+          "preference_score": 0.796922981739,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Mom's Zucchini Bread",
+            "Chicken Pot Pie IX",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 10.0,
+          "health_utility": 0.26785714285714285,
+          "meal_id": 675,
+          "preference_score": 0.794578909874,
+          "who_score": 2.0
+        }
+      ],
+      "target": 0.36011904761904745,
+      "top10_overlap": 0.4,
+      "train_only_health_baseline": 0.19494047619047644,
+      "user_id": 610
+    }
+  ],
+  "reranking_result_schema_version": 1,
+  "selection": {
+    "fixed_retention_constraint_satisfied": true,
+    "fixed_weight_trials": [
+      {
+        "alpha": 0.1,
+        "validation": {
+          "candidate_goal_feasible_user_rate@100": 1.0,
+          "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+          "goal_item_rate@10": 0.18398230088495574,
+          "hard_filter_backfill_items_per_user": 0.0,
+          "mean_health_lift_vs_user_baseline@10": -0.003389578744915689,
+          "mean_health_utility@10": 0.3078742625368734,
+          "mean_intervention_intensity": 0.09999999999999999,
+          "ndcg@10": 0.06298987141582098,
+          "ndcg@10_retention": 0.9967970406535748,
+          "preference_top10_overlap": 0.9819469026548674,
+          "recall@10": 0.08763419893864745,
+          "recall@10_retention": 1.0024513652679687,
+          "users_with_all_goal_items@10": 0.0,
+          "users_with_any_goal_item@10": 0.8168141592920354
+        }
+      },
+      {
+        "alpha": 0.2,
+        "validation": {
+          "candidate_goal_feasible_user_rate@100": 1.0,
+          "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+          "goal_item_rate@10": 0.19672566371681416,
+          "hard_filter_backfill_items_per_user": 0.0,
+          "mean_health_lift_vs_user_baseline@10": -0.0004652740672925204,
+          "mean_health_utility@10": 0.31079856721449656,
+          "mean_intervention_intensity": 0.19999999999999998,
+          "ndcg@10": 0.06221057522474189,
+          "ndcg@10_retention": 0.9844648970946164,
+          "preference_top10_overlap": 0.9626548672566372,
+          "recall@10": 0.08563567386490112,
+          "recall@10_retention": 0.9795901511191194,
+          "users_with_all_goal_items@10": 0.0,
+          "users_with_any_goal_item@10": 0.8362831858407079
+        }
+      },
+      {
+        "alpha": 0.3,
+        "validation": {
+          "candidate_goal_feasible_user_rate@100": 1.0,
+          "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+          "goal_item_rate@10": 0.21584070796460175,
+          "hard_filter_backfill_items_per_user": 0.0,
+          "mean_health_lift_vs_user_baseline@10": 0.0038225472559270113,
+          "mean_health_utility@10": 0.3150863885377161,
+          "mean_intervention_intensity": 0.3,
+          "ndcg@10": 0.06184555778885402,
+          "ndcg@10_retention": 0.9786885985929401,
+          "preference_top10_overlap": 0.9356637168141593,
+          "recall@10": 0.08408700129852945,
+          "recall@10_retention": 0.9618748191218565,
+          "users_with_all_goal_items@10": 0.0,
+          "users_with_any_goal_item@10": 0.8592920353982301
+        }
+      },
+      {
+        "alpha": 0.4,
+        "validation": {
+          "candidate_goal_feasible_user_rate@100": 1.0,
+          "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+          "goal_item_rate@10": 0.24424778761061947,
+          "hard_filter_backfill_items_per_user": 0.0,
+          "mean_health_lift_vs_user_baseline@10": 0.010296156611173557,
+          "mean_health_utility@10": 0.32155999789296263,
+          "mean_intervention_intensity": 0.39999999999999997,
+          "ndcg@10": 0.0616696794541009,
+          "ndcg@10_retention": 0.9759053732956592,
+          "preference_top10_overlap": 0.9012389380530973,
+          "recall@10": 0.08442963105994465,
+          "recall@10_retention": 0.9657941756775382,
+          "users_with_all_goal_items@10": 0.0,
+          "users_with_any_goal_item@10": 0.8973451327433628
+        }
+      }
+    ],
+    "gap_rank_trials": [
+      {
+        "max_quota_share": 0.2,
+        "validation": {
+          "candidate_goal_feasible_user_rate@100": 1.0,
+          "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+          "goal_item_rate@10": 0.22539823008849558,
+          "hard_filter_backfill_items_per_user": 0.0,
+          "mean_health_lift_vs_user_baseline@10": 0.001358893652892934,
+          "mean_health_utility@10": 0.312622734934682,
+          "mean_intervention_intensity": 0.09954834120184544,
+          "ndcg@10": 0.061133996709664656,
+          "ndcg@10_retention": 0.9674283441736546,
+          "preference_top10_overlap": 0.9497345132743363,
+          "recall@10": 0.08093748531910717,
+          "recall@10_retention": 0.925847370571599,
+          "users_with_all_goal_items@10": 0.0,
+          "users_with_any_goal_item@10": 0.995575221238938
+        }
+      },
+      {
+        "max_quota_share": 0.4,
+        "validation": {
+          "candidate_goal_feasible_user_rate@100": 1.0,
+          "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+          "goal_item_rate@10": 0.30035398230088495,
+          "hard_filter_backfill_items_per_user": 0.0,
+          "mean_health_lift_vs_user_baseline@10": 0.01224411278479337,
+          "mean_health_utility@10": 0.32350795406658245,
+          "mean_intervention_intensity": 0.19909668240369088,
+          "ndcg@10": 0.05983377133487268,
+          "ndcg@10_retention": 0.9468526424513966,
+          "preference_top10_overlap": 0.8747787610619469,
+          "recall@10": 0.07774527886795497,
+          "recall@10_retention": 0.8893315838818037,
+          "users_with_all_goal_items@10": 0.0,
+          "users_with_any_goal_item@10": 0.995575221238938
+        }
+      },
+      {
+        "max_quota_share": 0.6,
+        "validation": {
+          "candidate_goal_feasible_user_rate@100": 1.0,
+          "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+          "goal_item_rate@10": 0.38849557522123895,
+          "hard_filter_backfill_items_per_user": 0.0,
+          "mean_health_lift_vs_user_baseline@10": 0.02505990503089539,
+          "mean_health_utility@10": 0.33632374631268447,
+          "mean_intervention_intensity": 0.29864502360553635,
+          "ndcg@10": 0.05747719276063784,
+          "ndcg@10_retention": 0.9095604477530135,
+          "preference_top10_overlap": 0.786637168141593,
+          "recall@10": 0.0725797769657274,
+          "recall@10_retention": 0.8302431857804239,
+          "users_with_all_goal_items@10": 0.0,
+          "users_with_any_goal_item@10": 0.995575221238938
+        }
+      },
+      {
+        "max_quota_share": 0.8,
+        "validation": {
+          "candidate_goal_feasible_user_rate@100": 1.0,
+          "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+          "goal_item_rate@10": 0.48053097345132745,
+          "hard_filter_backfill_items_per_user": 0.0,
+          "mean_health_lift_vs_user_baseline@10": 0.03844960161749461,
+          "mean_health_utility@10": 0.3497134428992837,
+          "mean_intervention_intensity": 0.39819336480738177,
+          "ndcg@10": 0.0557689578566277,
+          "ndcg@10_retention": 0.8825281097153973,
+          "preference_top10_overlap": 0.6946017699115045,
+          "recall@10": 0.06885243899293064,
+          "recall@10_retention": 0.7876060066323478,
+          "users_with_all_goal_items@10": 0.0,
+          "users_with_any_goal_item@10": 0.995575221238938
+        }
+      }
+    ],
+    "gap_retention_constraint_satisfied": true,
+    "preference_retention_floor": 0.9,
+    "rule": "maximize validation goal_item_rate@10 subject to at least 90% validation NDCG@10 retention; health utility, NDCG, then smaller parameter break ties",
+    "selected_fixed_alpha": 0.4,
+    "selected_gap_max_quota_share": 0.6,
+    "test_metrics_used_for_parameter_selection": false
+  },
+  "test": {
+    "fixed_weight": {
+      "candidate_goal_feasible_user_rate@100": 1.0,
+      "candidate_goal_fully_feasible_user_rate@100": 0.9371633752244165,
+      "goal_item_rate@10": 0.251705565529623,
+      "hard_filter_backfill_items_per_user": 0.0,
+      "mean_health_lift_vs_user_baseline@10": 0.01142287056954211,
+      "mean_health_utility@10": 0.3233486684619989,
+      "mean_intervention_intensity": 0.3999999999999999,
+      "ndcg@10": 0.06295754564689585,
+      "ndcg@10_retention": 0.9689407439007944,
+      "preference_top10_overlap": 0.9008976660682227,
+      "recall@10": 0.08657713814070049,
+      "recall@10_retention": 0.991948271691827,
+      "users_with_all_goal_items@10": 0.0,
+      "users_with_any_goal_item@10": 0.9093357271095153
+    },
+    "gap_rank": {
+      "candidate_goal_feasible_user_rate@100": 1.0,
+      "candidate_goal_fully_feasible_user_rate@100": 0.9371633752244165,
+      "goal_item_rate@10": 0.3879712746858169,
+      "hard_filter_backfill_items_per_user": 0.0,
+      "mean_health_lift_vs_user_baseline@10": 0.024643675049323244,
+      "mean_health_utility@10": 0.33656947294178,
+      "mean_intervention_intensity": 0.29711823387365227,
+      "ndcg@10": 0.060721174968944795,
+      "ndcg@10_retention": 0.9345221425073227,
+      "preference_top10_overlap": 0.7916517055655296,
+      "recall@10": 0.07701113323772259,
+      "recall@10_retention": 0.8823467968188242,
+      "users_with_all_goal_items@10": 0.0,
+      "users_with_any_goal_item@10": 0.9946140035906643
+    },
+    "hard_filter": {
+      "candidate_goal_feasible_user_rate@100": 1.0,
+      "candidate_goal_fully_feasible_user_rate@100": 0.9371633752244165,
+      "goal_item_rate@10": 0.9883303411131059,
+      "hard_filter_backfill_items_per_user": 0.11669658886894076,
+      "mean_health_lift_vs_user_baseline@10": 0.1085789255409022,
+      "mean_health_utility@10": 0.420504723433359,
+      "mean_intervention_intensity": 0.0,
+      "ndcg@10": 0.026742284537915474,
+      "ndcg@10_retention": 0.41157400288605633,
+      "preference_top10_overlap": 0.1912926391382406,
+      "recall@10": 0.03410072260594023,
+      "recall@10_retention": 0.39070537071151956,
+      "users_with_all_goal_items@10": 0.9371633752244165,
+      "users_with_any_goal_item@10": 1.0
+    },
+    "preference_only": {
+      "candidate_goal_feasible_user_rate@100": 1.0,
+      "candidate_goal_fully_feasible_user_rate@100": 0.9371633752244165,
+      "goal_item_rate@10": 0.17962298025134651,
+      "hard_filter_backfill_items_per_user": 0.0,
+      "mean_health_lift_vs_user_baseline@10": -0.005177005467048412,
+      "mean_health_utility@10": 0.30674879242540837,
+      "mean_intervention_intensity": 0.0,
+      "ndcg@10": 0.06497564071197917,
+      "ndcg@10_retention": 1.0,
+      "preference_top10_overlap": 1.0,
+      "recall@10": 0.08727989211880778,
+      "recall@10_retention": 1.0,
+      "users_with_all_goal_items@10": 0.0,
+      "users_with_any_goal_item@10": 0.8043087971274686
+    }
+  },
+  "test_recommendation_artifact": {
+    "path": "data/processed/mealrecplus_h/reranked/gap_rank_test_top10.csv",
+    "rows": 11140,
+    "sha256": "dcdbc9fe86099cd3239fcac5c265a1c30114aa054bd531ea220cc9fce53c57d8",
+    "tracked_by_git": false
+  },
+  "validation": {
+    "fixed_weight": {
+      "candidate_goal_feasible_user_rate@100": 1.0,
+      "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+      "goal_item_rate@10": 0.24424778761061947,
+      "hard_filter_backfill_items_per_user": 0.0,
+      "mean_health_lift_vs_user_baseline@10": 0.010296156611173557,
+      "mean_health_utility@10": 0.32155999789296263,
+      "mean_intervention_intensity": 0.39999999999999997,
+      "ndcg@10": 0.0616696794541009,
+      "ndcg@10_retention": 0.9759053732956592,
+      "preference_top10_overlap": 0.9012389380530973,
+      "recall@10": 0.08442963105994465,
+      "recall@10_retention": 0.9657941756775382,
+      "users_with_all_goal_items@10": 0.0,
+      "users_with_any_goal_item@10": 0.8973451327433628
+    },
+    "gap_rank": {
+      "candidate_goal_feasible_user_rate@100": 1.0,
+      "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+      "goal_item_rate@10": 0.38849557522123895,
+      "hard_filter_backfill_items_per_user": 0.0,
+      "mean_health_lift_vs_user_baseline@10": 0.02505990503089539,
+      "mean_health_utility@10": 0.33632374631268447,
+      "mean_intervention_intensity": 0.29864502360553635,
+      "ndcg@10": 0.05747719276063784,
+      "ndcg@10_retention": 0.9095604477530135,
+      "preference_top10_overlap": 0.786637168141593,
+      "recall@10": 0.0725797769657274,
+      "recall@10_retention": 0.8302431857804239,
+      "users_with_all_goal_items@10": 0.0,
+      "users_with_any_goal_item@10": 0.995575221238938
+    },
+    "hard_filter": {
+      "candidate_goal_feasible_user_rate@100": 1.0,
+      "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+      "goal_item_rate@10": 0.988495575221239,
+      "hard_filter_backfill_items_per_user": 0.11504424778761062,
+      "mean_health_lift_vs_user_baseline@10": 0.10838823415015358,
+      "mean_health_utility@10": 0.41965207543194266,
+      "mean_intervention_intensity": 0.0,
+      "ndcg@10": 0.026088318694915978,
+      "ndcg@10_retention": 0.4128403231537323,
+      "preference_top10_overlap": 0.18663716814159292,
+      "recall@10": 0.03384906081445231,
+      "recall@10_retention": 0.38720086036550616,
+      "users_with_all_goal_items@10": 0.9345132743362832,
+      "users_with_any_goal_item@10": 1.0
+    },
+    "preference_only": {
+      "candidate_goal_feasible_user_rate@100": 1.0,
+      "candidate_goal_fully_feasible_user_rate@100": 0.9345132743362832,
+      "goal_item_rate@10": 0.17513274336283186,
+      "hard_filter_backfill_items_per_user": 0.0,
+      "mean_health_lift_vs_user_baseline@10": -0.005654644063078418,
+      "mean_health_utility@10": 0.30560919721871066,
+      "mean_intervention_intensity": 0.0,
+      "ndcg@10": 0.06319227369948861,
+      "ndcg@10_retention": 1.0,
+      "preference_top10_overlap": 1.0,
+      "recall@10": 0.08741990083002346,
+      "recall@10_retention": 1.0,
+      "users_with_all_goal_items@10": 0.0,
+      "users_with_any_goal_item@10": 0.7938053097345132
+    }
+  }
+}

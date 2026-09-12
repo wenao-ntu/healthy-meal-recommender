@@ -1,0 +1,25 @@
+# Shallow LightGCN candidate; only n_layers differs from the second trial.
+use_gpu: true
+gpu_id: "0"
+state: ERROR
+epochs: 30
+train_batch_size: 4096
+shuffle: true
+learner: adam
+learning_rate: 0.001
+weight_decay: 0.0
+train_neg_sample_args:
+  distribution: uniform
+  sample_num: 1
+  alpha: 1.0
+  dynamic: false
+  candidate_num: 0
+eval_step: 1
+stopping_step: 5
+checkpoint_dir: checkpoints/lightgcn
+enable_amp: false
+enable_scaler: false
+
+embedding_size: 64
+n_layers: 1
+reg_weight: 0.00001

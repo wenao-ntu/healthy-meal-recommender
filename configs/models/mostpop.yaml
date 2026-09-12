@@ -1,0 +1,11 @@
+# MostPop has no learned parameters; it counts each positive training row exactly once.
+use_gpu: false
+gpu_id: ""
+state: ERROR
+epochs: 1
+train_batch_size: 4096
+shuffle: false
+train_neg_sample_args: null
+eval_step: 1
+stopping_step: 1
+checkpoint_dir: checkpoints/mostpop

@@ -1,0 +1,25 @@
+{
+  "candidates": [
+    {
+      "checkpoint": "checkpoints/neumf/standard.pth",
+      "model": "NeuMF",
+      "result_file": "results/baselines/neumf.json",
+      "selected_config": "standard",
+      "validation_ndcg@10": 0.063192
+    },
+    {
+      "checkpoint": "checkpoints/lightgcn/1-layer.pth",
+      "model": "LightGCN",
+      "result_file": "results/baselines/lightgcn.json",
+      "selected_config": "1-layer",
+      "validation_ndcg@10": 0.045095
+    }
+  ],
+  "purpose": "preference candidate generator for GAP Rank",
+  "rule": "highest validation NDCG@10 among personalized models",
+  "selected_checkpoint": "checkpoints/neumf/standard.pth",
+  "selected_config": "standard",
+  "selected_model": "NeuMF",
+  "selection_schema_version": 1,
+  "test_metrics_used_for_selection": false
+}

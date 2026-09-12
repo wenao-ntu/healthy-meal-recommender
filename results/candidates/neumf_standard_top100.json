@@ -1,0 +1,61 @@
+{
+  "candidate_generator": {
+    "checkpoint": "checkpoints/neumf/standard.pth",
+    "checkpoint_sha256": "66aabe209730713ea0c31ff61486ebbe5887863e7c5753a00e7ff63647339868",
+    "config": "standard",
+    "model": "NeuMF",
+    "selected_by": "highest validation NDCG@10 among personalized models",
+    "test_metrics_used_for_selection": false
+  },
+  "candidate_manifest_schema_version": 1,
+  "dataset_check": {
+    "train_interactions": 37413,
+    "train_meals": 3810,
+    "users": 1575
+  },
+  "protocol": {
+    "candidate_files_contain_ground_truth_labels": false,
+    "candidate_k": 100,
+    "catalog": "3,810 meals seen in training",
+    "final_recommendation_k": 10,
+    "test_history_excluded": "train and validation interactions",
+    "tie_break": "ascending numeric raw meal_id",
+    "validation_history_excluded": "train interactions"
+  },
+  "provenance": {
+    "data_manifest": "results/data_preparation/mealrecplus_h_manifest.json",
+    "data_manifest_sha256": "c0e7e9fe01677c11c49b3f0ef5ebd7d9ce474c9932a86426695d6594e60448e4",
+    "model_selection": "results/comparison/preference_model_selection.json",
+    "model_selection_sha256": "77b37def79865141b31be6c265ff07af7b5feea8b71332d1c19945882b23fd7e"
+  },
+  "reproducibility": {
+    "device": "cuda",
+    "generation_timestamp_included": false,
+    "seed": 2026,
+    "user_batch_size": 64
+  },
+  "splits": {
+    "test": {
+      "bytes": 2943488,
+      "candidate_recall@100": 0.28407244831719214,
+      "history_overlap_rows": 0,
+      "output": "data/processed/mealrecplus_h/candidates/neumf_standard_test_top100.csv",
+      "rows": 111400,
+      "score_max": 0.9820906519889832,
+      "score_min": 0.0679197907447815,
+      "sha256": "e7d8b8cc9848665aef57257b1652d4be06e65b8c97efd3dec990215173f7e983",
+      "users": 1114
+    },
+    "validation": {
+      "bytes": 2986017,
+      "candidate_recall@100": 0.2761964686373016,
+      "history_overlap_rows": 0,
+      "output": "data/processed/mealrecplus_h/candidates/neumf_standard_validation_top100.csv",
+      "rows": 113000,
+      "score_max": 0.9844882488250732,
+      "score_min": 0.07171039283275604,
+      "sha256": "97d2dbdb08b422e3f60f6c82cfa672600c349f654abe4ae13d736e0577628d21",
+      "users": 1130
+    }
+  }
+}

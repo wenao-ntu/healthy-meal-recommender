@@ -1,0 +1,151 @@
+{
+  "comparison": {
+    "test_ndcg@10_delta_vs_mostpop": 0.026555000000000002,
+    "test_ndcg@10_delta_vs_neumf": -0.023970000000000005,
+    "validation_ndcg@10_delta_vs_neumf": -0.018096999999999995
+  },
+  "dataset": {
+    "test_interactions": 4673,
+    "test_users": 1114,
+    "train_interactions": 37413,
+    "train_meals": 3810,
+    "users": 1575,
+    "validation_interactions": 4668,
+    "validation_users": 1130
+  },
+  "effective_protocol": {
+    "device": "cuda",
+    "evaluation_mode": "full catalog",
+    "metrics": [
+      "Recall",
+      "NDCG"
+    ],
+    "negative_samples_per_positive": 1,
+    "primary_metric": "NDCG@10",
+    "seed": 2026,
+    "test_history_excluded": "train and validation interactions",
+    "topk": [
+      5,
+      10,
+      20
+    ],
+    "training_negative_sampling": "uniform pairwise",
+    "validation_history_excluded": "train interactions"
+  },
+  "individual_assignment_boundary": {
+    "group_project_model": "LightGCN graph propagation over user-meal interactions",
+    "individual_model": "MF-BPR direct matrix-factorization embeddings",
+    "same_algorithm": false,
+    "shared_component": "pairwise BPR loss only"
+  },
+  "limitations": [
+    "Only one and two propagation layers are compared to control project scope.",
+    "Selection uses validation NDCG@10; test is not used for tuning."
+  ],
+  "model": {
+    "implementation": "RecBole graph neighborhood propagation",
+    "optimization_objective": "BPR pairwise ranking loss",
+    "recbole_name": "LightGCN",
+    "recbole_version": "1.2.1",
+    "report_name": "LightGCN"
+  },
+  "provenance": {
+    "data_manifest": "results/data_preparation/mealrecplus_h_manifest.json",
+    "data_manifest_sha256": "c0e7e9fe01677c11c49b3f0ef5ebd7d9ce474c9932a86426695d6594e60448e4",
+    "shared_config_files": [
+      "configs/data/mealrecplus_h.yaml",
+      "configs/evaluation/topn.yaml"
+    ]
+  },
+  "result_schema_version": 1,
+  "selected_checkpoint": {
+    "path": "checkpoints/lightgcn/1-layer.pth",
+    "recreated_by": "scripts/run_lightgcn.py",
+    "tracked_by_git": false
+  },
+  "selection": {
+    "rule": "highest validation NDCG@10; trial id breaks exact ties",
+    "selected_trial": "1-layer",
+    "test_evaluations_performed": 1,
+    "trials": [
+      {
+        "best_epoch": 8,
+        "best_validation_score": 0.045095,
+        "checkpoint": "checkpoints/lightgcn/1-layer.pth",
+        "config_file": "configs/models/lightgcn-1layer.yaml",
+        "dataset_shape_check": {
+          "train_interactions": 37413,
+          "train_meals": 3810,
+          "users": 1575
+        },
+        "epochs_completed": 14,
+        "hyperparameters": {
+          "early_stopping_checks": 5,
+          "embedding_size": 64,
+          "learning_rate": 0.001,
+          "maximum_epochs": 30,
+          "n_layers": 1,
+          "negative_samples_per_positive": 1,
+          "reg_weight": 1e-05
+        },
+        "parameter_count": 344768,
+        "trial_id": "1-layer",
+        "validation": {
+          "ndcg@10": 0.045095,
+          "ndcg@20": 0.05093,
+          "ndcg@5": 0.038461,
+          "recall@10": 0.061233,
+          "recall@20": 0.082992,
+          "recall@5": 0.040305
+        }
+      },
+      {
+        "best_epoch": 5,
+        "best_validation_score": 0.034124,
+        "checkpoint": "checkpoints/lightgcn/2-layer.pth",
+        "config_file": "configs/models/lightgcn-2layer.yaml",
+        "dataset_shape_check": {
+          "train_interactions": 37413,
+          "train_meals": 3810,
+          "users": 1575
+        },
+        "epochs_completed": 11,
+        "hyperparameters": {
+          "early_stopping_checks": 5,
+          "embedding_size": 64,
+          "learning_rate": 0.001,
+          "maximum_epochs": 30,
+          "n_layers": 2,
+          "negative_samples_per_positive": 1,
+          "reg_weight": 1e-05
+        },
+        "parameter_count": 344768,
+        "trial_id": "2-layer",
+        "validation": {
+          "ndcg@10": 0.034124,
+          "ndcg@20": 0.039796,
+          "ndcg@5": 0.027887,
+          "recall@10": 0.049644,
+          "recall@20": 0.068868,
+          "recall@5": 0.030527
+        }
+      }
+    ]
+  },
+  "test": {
+    "ndcg@10": 0.041006,
+    "ndcg@20": 0.048894,
+    "ndcg@5": 0.034521,
+    "recall@10": 0.059513,
+    "recall@20": 0.086234,
+    "recall@5": 0.039901
+  },
+  "validation": {
+    "ndcg@10": 0.045095,
+    "ndcg@20": 0.05093,
+    "ndcg@5": 0.038461,
+    "recall@10": 0.061233,
+    "recall@20": 0.082992,
+    "recall@5": 0.040305
+  }
+}

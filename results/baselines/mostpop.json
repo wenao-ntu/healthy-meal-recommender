@@ -1,0 +1,578 @@
+{
+  "best_validation_score": 0.018718,
+  "dataset": {
+    "test_interactions": 4673,
+    "test_users": 1114,
+    "train_interactions": 37413,
+    "train_meals": 3810,
+    "users": 1575,
+    "validation_interactions": 4668,
+    "validation_users": 1130
+  },
+  "effective_protocol": {
+    "device": "cpu",
+    "evaluation_mode": "full catalog",
+    "metric_decimal_place": 6,
+    "metrics": [
+      "Recall",
+      "NDCG"
+    ],
+    "primary_metric": "NDCG@10",
+    "seed": 2026,
+    "test_history_excluded": "train and validation interactions",
+    "topk": [
+      5,
+      10,
+      20
+    ],
+    "training_negative_sampling": "none",
+    "validation_history_excluded": "train interactions"
+  },
+  "fit_checks": {
+    "maximum_training_popularity": 86,
+    "meals_with_positive_count": 3810,
+    "positive_interactions_counted": 37413
+  },
+  "limitations": [
+    "MostPop is non-personalized except for excluding each user's history.",
+    "It is a sanity-check baseline, not the proposed health-aware method."
+  ],
+  "model": {
+    "implementation": "exact positive training-item frequency via torch.bincount; stable internal-id tie-break",
+    "model_class": "healthy_meal_recommender.models.MostPop",
+    "recbole_version": "1.2.1",
+    "report_name": "MostPop"
+  },
+  "provenance": {
+    "config_files": [
+      "configs/data/mealrecplus_h.yaml",
+      "configs/evaluation/topn.yaml",
+      "configs/models/mostpop.yaml"
+    ],
+    "data_manifest": "results/data_preparation/mealrecplus_h_manifest.json",
+    "data_manifest_sha256": "c0e7e9fe01677c11c49b3f0ef5ebd7d9ce474c9932a86426695d6594e60448e4"
+  },
+  "recommendation_samples": [
+    {
+      "history_band": "low_history",
+      "history_items_excluded": 2,
+      "hits_at_10": 0,
+      "recommendations": [
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 391,
+          "preference_score": 1.0000000007572816,
+          "training_popularity": 86,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Delicious Ham and Potato Soup",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 957,
+          "preference_score": 0.895348838197232,
+          "training_popularity": 77,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Slow Cooker Chicken Stroganoff",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.6666666666667,
+          "meal_id": 830,
+          "preference_score": 0.8604651172016622,
+          "training_popularity": 74,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Marinated Grilled Shrimp",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.33333333333333,
+          "meal_id": 20,
+          "preference_score": 0.7790697680965444,
+          "training_popularity": 67,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Best Chocolate Chip Cookies"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 216,
+          "preference_score": 0.7674418612276458,
+          "training_popularity": 66,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Slow Cooker Chicken Taco Soup",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 1111,
+          "preference_score": 0.755813954475777,
+          "training_popularity": 65,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Slow Cooker Beef Stew I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 75,
+          "preference_score": 0.7558139541464671,
+          "training_popularity": 65,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Enchiladas II",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 694,
+          "preference_score": 0.7325581405246502,
+          "training_popularity": 63,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Delicious Ham and Potato Soup",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 428,
+          "preference_score": 0.7209302335053974,
+          "training_popularity": 62,
+          "who_score": 3.0
+        },
+        {
+          "courses": [
+            "Mom's Zucchini Bread",
+            "Taco Seasoning I",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 8.0,
+          "meal_id": 725,
+          "preference_score": 0.7093023265113351,
+          "training_popularity": 61,
+          "who_score": 2.66666666666667
+        }
+      ],
+      "test_ground_truth_meal_ids": [
+        23,
+        140,
+        3639
+      ],
+      "user_id": 260
+    },
+    {
+      "history_band": "median_history",
+      "history_items_excluded": 14,
+      "hits_at_10": 0,
+      "recommendations": [
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 391,
+          "preference_score": 1.0000000007572816,
+          "training_popularity": 86,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Delicious Ham and Potato Soup",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 957,
+          "preference_score": 0.895348838197232,
+          "training_popularity": 77,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Slow Cooker Chicken Stroganoff",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.6666666666667,
+          "meal_id": 830,
+          "preference_score": 0.8604651172016622,
+          "training_popularity": 74,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Marinated Grilled Shrimp",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.33333333333333,
+          "meal_id": 20,
+          "preference_score": 0.7790697680965444,
+          "training_popularity": 67,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Best Chocolate Chip Cookies"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 216,
+          "preference_score": 0.7674418612276458,
+          "training_popularity": 66,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Slow Cooker Chicken Taco Soup",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 1111,
+          "preference_score": 0.755813954475777,
+          "training_popularity": 65,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Slow Cooker Beef Stew I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 75,
+          "preference_score": 0.7558139541464671,
+          "training_popularity": 65,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Enchiladas II",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 694,
+          "preference_score": 0.7325581405246502,
+          "training_popularity": 63,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Delicious Ham and Potato Soup",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 428,
+          "preference_score": 0.7209302335053974,
+          "training_popularity": 62,
+          "who_score": 3.0
+        },
+        {
+          "courses": [
+            "Mom's Zucchini Bread",
+            "Taco Seasoning I",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 8.0,
+          "meal_id": 725,
+          "preference_score": 0.7093023265113351,
+          "training_popularity": 61,
+          "who_score": 2.66666666666667
+        }
+      ],
+      "test_ground_truth_meal_ids": [
+        1626
+      ],
+      "user_id": 865
+    },
+    {
+      "history_band": "high_history",
+      "history_items_excluded": 1080,
+      "hits_at_10": 2,
+      "recommendations": [
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 391,
+          "preference_score": 1.0000000007572816,
+          "training_popularity": 86,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Marinated Grilled Shrimp",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.33333333333333,
+          "meal_id": 20,
+          "preference_score": 0.7790697680965444,
+          "training_popularity": 67,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Yummy Honey Chicken Kabobs",
+            "Garlic Chicken",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.0,
+          "meal_id": 674,
+          "preference_score": 0.6046511635401073,
+          "training_popularity": 52,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Yummy Honey Chicken Kabobs",
+            "Taco Seasoning I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 7.66666666666667,
+          "meal_id": 783,
+          "preference_score": 0.523255814932759,
+          "training_popularity": 45,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Taco Seasoning I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 6.66666666666667,
+          "meal_id": 38,
+          "preference_score": 0.5232558144958658,
+          "training_popularity": 45,
+          "who_score": 3.0
+        },
+        {
+          "courses": [
+            "Marinated Grilled Shrimp",
+            "Slow Cooker Chicken Taco Soup",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.66666666666667,
+          "meal_id": 495,
+          "preference_score": 0.5000000006641302,
+          "training_popularity": 43,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Cranberry Sauce",
+            "Awesome Slow Cooker Pot Roast",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 8.33333333333333,
+          "meal_id": 302,
+          "preference_score": 0.4883720936477638,
+          "training_popularity": 42,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Marinated Grilled Shrimp",
+            "Baked Pork Chops I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.33333333333333,
+          "meal_id": 1971,
+          "preference_score": 0.48837209358531297,
+          "training_popularity": 42,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Mouth-Watering Stuffed Mushrooms",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.0,
+          "meal_id": 1611,
+          "preference_score": 0.4767441868161259,
+          "training_popularity": 41,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Mom's Zucchini Bread",
+            "Roast Sticky Chicken-Rotisserie Style",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 9.66666666666667,
+          "meal_id": 335,
+          "preference_score": 0.4651162800621579,
+          "training_popularity": 40,
+          "who_score": 1.66666666666667
+        }
+      ],
+      "test_ground_truth_meal_ids": [
+        13,
+        53,
+        101,
+        106,
+        167,
+        191,
+        263,
+        280,
+        300,
+        318,
+        335,
+        379,
+        383,
+        391,
+        436,
+        450,
+        452,
+        470,
+        473,
+        524,
+        528,
+        551,
+        567,
+        621,
+        656,
+        658,
+        672,
+        686,
+        691,
+        708,
+        711,
+        717,
+        730,
+        803,
+        846,
+        854,
+        858,
+        925,
+        935,
+        937,
+        995,
+        1005,
+        1018,
+        1019,
+        1022,
+        1147,
+        1169,
+        1228,
+        1299,
+        1391,
+        1401,
+        1413,
+        1434,
+        1477,
+        1519,
+        1528,
+        1569,
+        1623,
+        1651,
+        1703,
+        1715,
+        1716,
+        1726,
+        1728,
+        1756,
+        1761,
+        1768,
+        1771,
+        1790,
+        1801,
+        1818,
+        1866,
+        1898,
+        1956,
+        1959,
+        1973,
+        2004,
+        2023,
+        2064,
+        2102,
+        2122,
+        2201,
+        2222,
+        2232,
+        2284,
+        2289,
+        2318,
+        2421,
+        2482,
+        2520,
+        2597,
+        2613,
+        2634,
+        2690,
+        2730,
+        2810,
+        2811,
+        2833,
+        2875,
+        2936,
+        2942,
+        3013,
+        3050,
+        3065,
+        3162,
+        3181,
+        3322,
+        3375,
+        3532,
+        3675
+      ],
+      "user_id": 252
+    }
+  ],
+  "result_schema_version": 1,
+  "test": {
+    "ndcg@10": 0.014451,
+    "ndcg@20": 0.020346,
+    "ndcg@5": 0.01079,
+    "recall@10": 0.023558,
+    "recall@20": 0.042784,
+    "recall@5": 0.012431
+  },
+  "validation": {
+    "ndcg@10": 0.018718,
+    "ndcg@20": 0.023985,
+    "ndcg@5": 0.015627,
+    "recall@10": 0.025886,
+    "recall@20": 0.043904,
+    "recall@5": 0.017205
+  }
+}

@@ -1,0 +1,29 @@
+# Default-sized candidate; all training settings match the compact trial.
+use_gpu: true
+gpu_id: "0"
+state: ERROR
+epochs: 20
+train_batch_size: 4096
+shuffle: true
+learner: adam
+learning_rate: 0.001
+weight_decay: 0.0
+train_neg_sample_args:
+  distribution: uniform
+  sample_num: 4
+  alpha: 1.0
+  dynamic: false
+  candidate_num: 0
+eval_step: 1
+stopping_step: 4
+checkpoint_dir: checkpoints/neumf
+enable_amp: false
+enable_scaler: false
+
+mf_embedding_size: 64
+mlp_embedding_size: 64
+mlp_hidden_size: [128, 64]
+dropout_prob: 0.1
+mf_train: true
+mlp_train: true
+use_pretrain: false

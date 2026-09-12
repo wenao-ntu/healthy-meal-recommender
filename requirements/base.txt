@@ -1,0 +1,11 @@
+# Numerical stack pinned for RecBole 1.2.1 compatibility.
+numpy==1.26.4
+scipy==1.10.1
+pandas==2.2.3
+scikit-learn==1.5.2
+
+# Recommendation framework. PyTorch is installed separately from torch-cu128.txt.
+recbole==1.2.1
+
+# Local interactive course-project demo.
+streamlit==1.63.0

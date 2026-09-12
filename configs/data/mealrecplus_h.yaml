@@ -1,0 +1,10 @@
+# Fixed official split prepared by scripts/prepare_mealrecplus.py
+dataset: mealrecplus_h
+data_path: data/processed/mealrecplus_h/recbole
+benchmark_filename: [train, valid, test]
+field_separator: "\t"
+
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: meal_id
+load_col:
+  inter: [user_id, meal_id]

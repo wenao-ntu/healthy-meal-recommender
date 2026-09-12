@@ -1,0 +1,402 @@
+{
+  "artifacts": {
+    "MealRec+/MealRec+H/course_category.txt": {
+      "bytes": 80715,
+      "sha256": "2f7d41b247da8f210431f60197f4290c820962879ec8234f355ecaad22ab15d3"
+    },
+    "MealRec+/MealRec+H/healthiness/course_fsa.txt": {
+      "bytes": 25319,
+      "sha256": "e134cc588faf8a703f8a901ce90cfb7beda03b72bbf5a0da12d2b305395569f9"
+    },
+    "MealRec+/MealRec+H/healthiness/course_who.txt": {
+      "bytes": 21840,
+      "sha256": "f49213da58209adb5ad4f5aba72a7f170b7645755a13105d5e5f266e47d3baa6"
+    },
+    "MealRec+/MealRec+H/healthiness/meal_fsa.txt": {
+      "bytes": 55437,
+      "sha256": "dd6dff94e2333689ce65611decc165cc9e2c04e15763a613b9dd093b48691583"
+    },
+    "MealRec+/MealRec+H/healthiness/meal_who.txt": {
+      "bytes": 57037,
+      "sha256": "67fff069f13958c8081a672b2879ddd39d18c62006ce4d83692e2963c9ba0830"
+    },
+    "MealRec+/MealRec+H/healthiness/user_fsa.txt": {
+      "bytes": 26093,
+      "sha256": "e556311fa1c2b42788afca3184cf749543ced7045bbbc6842a8c72f43917524d"
+    },
+    "MealRec+/MealRec+H/healthiness/user_who.txt": {
+      "bytes": 27571,
+      "sha256": "7f4814227a4b01f9b8446bacb61023ff6733d6c88802570bfe26634fad48726b"
+    },
+    "MealRec+/MealRec+H/meal_course.txt": {
+      "bytes": 111738,
+      "sha256": "3394f312f7f49d63ce4bbf87447511b1f650980046ded7dbe447e364013b403d"
+    },
+    "MealRec+/MealRec+H/meta_data/course.zip": {
+      "bytes": 195052658,
+      "sha256": "00f10920166e21bbf2a581c835027cc413c7bc96c79053e4a8cfe0774dbff7ce"
+    },
+    "MealRec+/MealRec+H/meta_data/course2index.txt": {
+      "bytes": 87845,
+      "sha256": "ee75934e73fa3971f46c6cc63a5ad4e6ecb8e261d83788f6b904aece90a2cc25"
+    },
+    "MealRec+/MealRec+H/meta_data/user2index.txt": {
+      "bytes": 20416,
+      "sha256": "0c0ffc3b5e1a68b73d8da5481fd714883f0abd235735d00963562b1d955d1e63"
+    },
+    "MealRec+/MealRec+H/meta_data/user_course.zip": {
+      "bytes": 1880922,
+      "sha256": "661892a6c73ad03dec66b74d8d92ddfb87cef3a6150ab0bfd178ae178c8e62e7"
+    },
+    "MealRec+/MealRec+H/user_course.txt": {
+      "bytes": 1438578,
+      "sha256": "3cc6dd1037f2c4c03cac22c8dd84dbe53d747b6db28335f6b2252cdc97d920ba"
+    },
+    "MealRec+/MealRec+H/user_meal_test.txt": {
+      "bytes": 44483,
+      "sha256": "9021161c403423ef2cbd0d8365f97536be9648b1c7ed7de8f1d95116a1141e58"
+    },
+    "MealRec+/MealRec+H/user_meal_train.txt": {
+      "bytes": 355893,
+      "sha256": "c996268b4ac1beefe7f2749c5e93d1c94e88df621f9068e4ebd75d92555862cb"
+    },
+    "MealRec+/MealRec+H/user_meal_tune.txt": {
+      "bytes": 44534,
+      "sha256": "4ccc5e83fa0d6fdafe17e600da3c890409377903fe8c9aea06bf295a4de71f04"
+    }
+  },
+  "audit_schema_version": 1,
+  "audited_at_utc": "2026-09-11T05:58:03.965802+00:00",
+  "bundle_structure": {
+    "category_relationship_counts": {
+      "0": 3817,
+      "1": 3817,
+      "2": 3817
+    },
+    "courses_per_meal_counts": {
+      "3": 3817
+    },
+    "courses_with_multiple_categories": 0,
+    "meals": 3817,
+    "meals_with_exact_categories_0_1_2": 3817,
+    "unique_course_category_pairs": 942,
+    "unique_courses_by_category": {
+      "0": 296,
+      "1": 383,
+      "2": 263
+    },
+    "unique_courses_in_meals": 942
+  },
+  "healthiness": {
+    "course_fsa": {
+      "count": 7280,
+      "max": 12.0,
+      "mean": 9.11950549,
+      "min": 4.0,
+      "non_finite": 0
+    },
+    "course_who": {
+      "count": 7280,
+      "max": 7.0,
+      "mean": 2.21195055,
+      "min": 0.0,
+      "non_finite": 0
+    },
+    "meal_fsa": {
+      "count": 3817,
+      "max": 11.666666666666666,
+      "mean": 9.27578377,
+      "min": 5.0,
+      "non_finite": 0
+    },
+    "meal_who": {
+      "count": 3817,
+      "max": 5.333333333333333,
+      "mean": 2.06016942,
+      "min": 0.3333333333333333,
+      "non_finite": 0
+    },
+    "user_fsa": {
+      "count": 1575,
+      "max": 10.666666666666666,
+      "mean": 9.36230086,
+      "min": 7.0,
+      "non_finite": 0
+    },
+    "user_who": {
+      "count": 1575,
+      "max": 3.6666666666666665,
+      "mean": 2.05538204,
+      "min": 0.9166666666666666,
+      "non_finite": 0
+    }
+  },
+  "metadata": {
+    "course_csv": {
+      "archive_members": [
+        {
+          "name": "course.csv",
+          "uncompressed_bytes": 706051874
+        }
+      ],
+      "category_counts": {
+        "appetizer": 2737,
+        "dessert": 1991,
+        "main-dish": 2552
+      },
+      "fields": [
+        "course_id",
+        "course_name",
+        "review_nums",
+        "category",
+        "aver_rate",
+        "image_url",
+        "ingredients",
+        "cooking_directions",
+        "nutritions",
+        "reviews",
+        "tags"
+      ],
+      "fields_match_readme": true,
+      "nutrient_amount_coverage": {
+        "carbohydrates": {
+          "ratio": 1.0,
+          "rows": 7280
+        },
+        "fat": {
+          "ratio": 1.0,
+          "rows": 7280
+        },
+        "fiber": {
+          "ratio": 1.0,
+          "rows": 7280
+        },
+        "protein": {
+          "ratio": 1.0,
+          "rows": 7280
+        },
+        "saturatedFat": {
+          "ratio": 1.0,
+          "rows": 7280
+        },
+        "sodium": {
+          "ratio": 1.0,
+          "rows": 7280
+        },
+        "sugars": {
+          "ratio": 1.0,
+          "rows": 7280
+        }
+      },
+      "nutrition_parse_errors": 0,
+      "rows": 7280,
+      "selected_null_counts": {
+        "category": 0,
+        "course_name": 0,
+        "ingredients": 0,
+        "nutritions": 0
+      },
+      "unique_course_ids": 7280
+    },
+    "course_mapping_rows": 7280,
+    "user_course_csv": {
+      "archive_members": [
+        {
+          "name": "user_course.csv",
+          "uncompressed_bytes": 6369850
+        }
+      ],
+      "date_max_lexical": "2018-03-14T02:43:27.763",
+      "date_min_lexical": "2000-02-15T10:01:18.573",
+      "fields": [
+        "user_id",
+        "course_id",
+        "rating",
+        "dateLastModified"
+      ],
+      "fields_match_readme": true,
+      "rows": 151148,
+      "unique_source_course_ids": 7280,
+      "unique_source_user_ids": 1575
+    },
+    "user_mapping_rows": 1575
+  },
+  "privacy_scope": {
+    "medical_or_patient_fields_observed": false,
+    "model_ids": "zero-based numeric indices",
+    "source_user_mapping_present": true,
+    "source_user_mapping_required_for_model": false
+  },
+  "published_user_baseline_comparison": {
+    "fsa_all_splits": {
+      "exact_within_1e-10": 202,
+      "max_absolute_error": 1.071428571429,
+      "mean_absolute_error": 0.079926010768,
+      "users_compared": 1575
+    },
+    "fsa_train_only": {
+      "exact_within_1e-10": 1575,
+      "max_absolute_error": 0.0,
+      "mean_absolute_error": 0.0,
+      "users_compared": 1575
+    },
+    "who_all_splits": {
+      "exact_within_1e-10": 220,
+      "max_absolute_error": 0.722222222222,
+      "mean_absolute_error": 0.057946557226,
+      "users_compared": 1575
+    },
+    "who_train_only": {
+      "exact_within_1e-10": 1575,
+      "max_absolute_error": 0.0,
+      "mean_absolute_error": 0.0,
+      "users_compared": 1575
+    }
+  },
+  "relationships": {
+    "course_category": {
+      "duplicate_rows": 10509,
+      "left_ids": {
+        "contiguous_zero_based": false,
+        "max": 4804,
+        "min": 1,
+        "unique": 942
+      },
+      "right_ids": {
+        "contiguous_zero_based": true,
+        "max": 2,
+        "min": 0,
+        "unique": 3
+      },
+      "rows": 11451
+    },
+    "meal_course": {
+      "duplicate_rows": 0,
+      "left_ids": {
+        "contiguous_zero_based": true,
+        "max": 3816,
+        "min": 0,
+        "unique": 3817
+      },
+      "right_ids": {
+        "contiguous_zero_based": false,
+        "max": 4804,
+        "min": 1,
+        "unique": 942
+      },
+      "rows": 11451
+    },
+    "user_course": {
+      "duplicate_rows": 0,
+      "left_ids": {
+        "contiguous_zero_based": true,
+        "max": 1574,
+        "min": 0,
+        "unique": 1575
+      },
+      "right_ids": {
+        "contiguous_zero_based": true,
+        "max": 7279,
+        "min": 0,
+        "unique": 7280
+      },
+      "rows": 151148
+    },
+    "user_meal_test": {
+      "duplicate_rows": 0,
+      "left_ids": {
+        "contiguous_zero_based": false,
+        "max": 1574,
+        "min": 0,
+        "unique": 1114
+      },
+      "right_ids": {
+        "contiguous_zero_based": false,
+        "max": 3807,
+        "min": 0,
+        "unique": 2347
+      },
+      "rows": 4677
+    },
+    "user_meal_train": {
+      "duplicate_rows": 0,
+      "left_ids": {
+        "contiguous_zero_based": true,
+        "max": 1574,
+        "min": 0,
+        "unique": 1575
+      },
+      "right_ids": {
+        "contiguous_zero_based": false,
+        "max": 3816,
+        "min": 0,
+        "unique": 3810
+      },
+      "rows": 37413
+    },
+    "user_meal_tune": {
+      "duplicate_rows": 0,
+      "left_ids": {
+        "contiguous_zero_based": false,
+        "max": 1574,
+        "min": 0,
+        "unique": 1131
+      },
+      "right_ids": {
+        "contiguous_zero_based": false,
+        "max": 3816,
+        "min": 0,
+        "unique": 2332
+      },
+      "rows": 4677
+    }
+  },
+  "source": {
+    "commit": "8bd7d7d7effb505be4a7d2074b28abad802fe0f7",
+    "license_files": [],
+    "license_status": "no_explicit_license_file",
+    "readme_requires_citation": true,
+    "repository": "https://github.com/WUT-IDEA/MealRecPlus",
+    "variant": "MealRec+H"
+  },
+  "user_meal_split": {
+    "cold_start_against_train": {
+      "test": {
+        "cold_interactions": 4,
+        "cold_meal_ids": [
+          1672,
+          3194,
+          3608
+        ],
+        "users_removed_by_warm_filter": 0,
+        "warm_interactions": 4673,
+        "warm_users": 1114
+      },
+      "tune": {
+        "cold_interactions": 9,
+        "cold_meal_ids": [
+          734,
+          1672,
+          3431,
+          3608,
+          3731,
+          3774
+        ],
+        "users_removed_by_warm_filter": 1,
+        "warm_interactions": 4668,
+        "warm_users": 1130
+      }
+    },
+    "meal_interaction_timestamp_available": false,
+    "ratios": {
+      "test": 0.10000641,
+      "train": 0.79998717,
+      "tune": 0.10000641
+    },
+    "total_rows": 46767,
+    "total_unique_rows": 46767,
+    "train_test_overlap": 0,
+    "train_tune_overlap": 0,
+    "tune_test_overlap": 0
+  }
+}

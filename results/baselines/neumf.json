@@ -1,0 +1,628 @@
+{
+  "comparison_to_mostpop": {
+    "test_ndcg@10_delta": 0.05052500000000001,
+    "test_recall@10_delta": 0.063722,
+    "validation_ndcg@10_delta": 0.044474
+  },
+  "dataset": {
+    "test_interactions": 4673,
+    "test_users": 1114,
+    "train_interactions": 37413,
+    "train_meals": 3810,
+    "users": 1575,
+    "validation_interactions": 4668,
+    "validation_users": 1130
+  },
+  "effective_protocol": {
+    "device": "cuda",
+    "evaluation_mode": "full catalog",
+    "metrics": [
+      "Recall",
+      "NDCG"
+    ],
+    "negative_samples_per_positive": 4,
+    "primary_metric": "NDCG@10",
+    "seed": 2026,
+    "test_history_excluded": "train and validation interactions",
+    "topk": [
+      5,
+      10,
+      20
+    ],
+    "training_negative_sampling": "uniform",
+    "validation_history_excluded": "train interactions"
+  },
+  "limitations": [
+    "Only two model capacities are compared to control project scope.",
+    "Selection uses validation NDCG@10; the test split is not used for tuning."
+  ],
+  "model": {
+    "implementation": "RecBole pointwise neural collaborative filtering",
+    "recbole_name": "NeuMF",
+    "recbole_version": "1.2.1",
+    "report_name": "NeuMF"
+  },
+  "provenance": {
+    "data_manifest": "results/data_preparation/mealrecplus_h_manifest.json",
+    "data_manifest_sha256": "c0e7e9fe01677c11c49b3f0ef5ebd7d9ce474c9932a86426695d6594e60448e4",
+    "shared_config_files": [
+      "configs/data/mealrecplus_h.yaml",
+      "configs/evaluation/topn.yaml"
+    ]
+  },
+  "recommendation_samples": [
+    {
+      "history_band": "low_history",
+      "history_items_excluded": 2,
+      "hits_at_10": 0,
+      "recommendations": [
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Slow Cooker Chicken Stroganoff",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.6666666666667,
+          "meal_id": 830,
+          "preference_score": 0.7342016696929932,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Delicious Ham and Potato Soup",
+            "Carrot Cake III"
+          ],
+          "fsa_score": 10.6666666666667,
+          "meal_id": 1044,
+          "preference_score": 0.6756771802902222,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Pizza Dough I",
+            "Peanut Butter Cup Cookies"
+          ],
+          "fsa_score": 8.33333333333333,
+          "meal_id": 378,
+          "preference_score": 0.6639443635940552,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Slow-Cooker Pepper Steak",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 668,
+          "preference_score": 0.6447473764419556,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Slow Cooker Chicken Stroganoff",
+            "Apple Crisp II"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 1757,
+          "preference_score": 0.6405825614929199,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Pizza Dough I",
+            "The Best Rolled Sugar Cookies"
+          ],
+          "fsa_score": 8.33333333333333,
+          "meal_id": 290,
+          "preference_score": 0.6385889649391174,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Buffalo Chicken Dip",
+            "Baked Pork Chops I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.66666666666667,
+          "meal_id": 144,
+          "preference_score": 0.6196302771568298,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Garlic Chicken",
+            "Peanut Butter Cup Cookies"
+          ],
+          "fsa_score": 9.33333333333333,
+          "meal_id": 178,
+          "preference_score": 0.6172853112220764,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Hot Artichoke and Spinach Dip II",
+            "Awesome Slow Cooker Pot Roast",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.33333333333333,
+          "meal_id": 1050,
+          "preference_score": 0.6169301867485046,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Awesome Slow Cooker Pot Roast",
+            "No Bake Cookies III"
+          ],
+          "fsa_score": 9.33333333333333,
+          "meal_id": 1931,
+          "preference_score": 0.6024549603462219,
+          "who_score": 1.66666666666667
+        }
+      ],
+      "test_ground_truth_meal_ids": [
+        23,
+        140,
+        3639
+      ],
+      "user_id": 260
+    },
+    {
+      "history_band": "median_history",
+      "history_items_excluded": 14,
+      "hits_at_10": 0,
+      "recommendations": [
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Delicious Ham and Potato Soup",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 428,
+          "preference_score": 0.9210126399993896,
+          "who_score": 3.0
+        },
+        {
+          "courses": [
+            "Jalapeno Popper Spread",
+            "Baked Pork Chops I",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.33333333333333,
+          "meal_id": 390,
+          "preference_score": 0.8971931338310242,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Delicious Ham and Potato Soup",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 281,
+          "preference_score": 0.8904581069946289,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Mom's Zucchini Bread",
+            "World's Best Lasagna",
+            "Apple Crisp II"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 217,
+          "preference_score": 0.8699832558631897,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Jalapeno Popper Spread",
+            "Taco Seasoning I",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 7.66666666666667,
+          "meal_id": 458,
+          "preference_score": 0.8562957644462585,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Mom's Zucchini Bread",
+            "Slow Cooker Chicken and Dumplings",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 180,
+          "preference_score": 0.8415019512176514,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Chicken Enchiladas II",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 117,
+          "preference_score": 0.8253585696220398,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Mom's Zucchini Bread",
+            "Taco Seasoning I",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 8.0,
+          "meal_id": 725,
+          "preference_score": 0.8247494101524353,
+          "who_score": 2.66666666666667
+        },
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Salisbury Steak",
+            "To Die For Blueberry Muffins"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 2046,
+          "preference_score": 0.807532012462616,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Jalapeno Popper Spread",
+            "Chicken Enchiladas II",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 9.33333333333333,
+          "meal_id": 1470,
+          "preference_score": 0.8067689538002014,
+          "who_score": 2.33333333333333
+        }
+      ],
+      "test_ground_truth_meal_ids": [
+        1626
+      ],
+      "user_id": 865
+    },
+    {
+      "history_band": "high_history",
+      "history_items_excluded": 1080,
+      "hits_at_10": 3,
+      "recommendations": [
+        {
+          "courses": [
+            "Caramel Apple Dip",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 2472,
+          "preference_score": 0.3392690420150757,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Mouse's Macaroni and Cheese",
+            "Best Chocolate Chip Cookies"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 669,
+          "preference_score": 0.30300816893577576,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Cheeseburger Soup I",
+            "Sloppy Joes II",
+            "Sugar Cookie Icing"
+          ],
+          "fsa_score": 8.66666666666667,
+          "meal_id": 3236,
+          "preference_score": 0.27341005206108093,
+          "who_score": 1.33333333333333
+        },
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Pizza Dough I",
+            "Amish White Bread"
+          ],
+          "fsa_score": 7.33333333333333,
+          "meal_id": 2201,
+          "preference_score": 0.27272579073905945,
+          "who_score": 3.66666666666667
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Catherine's Spicy Chicken Soup",
+            "Beth's Spicy Oatmeal Raisin Cookies"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 76,
+          "preference_score": 0.23022139072418213,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Too Much Chocolate Cake"
+          ],
+          "fsa_score": 10.3333333333333,
+          "meal_id": 155,
+          "preference_score": 0.22111038863658905,
+          "who_score": 1.66666666666667
+        },
+        {
+          "courses": [
+            "Quick and Easy Alfredo Sauce",
+            "Shepherd's Pie VI",
+            "Banana Banana Bread"
+          ],
+          "fsa_score": 9.66666666666667,
+          "meal_id": 367,
+          "preference_score": 0.20626382529735565,
+          "who_score": 2.0
+        },
+        {
+          "courses": [
+            "Mom's Zucchini Bread",
+            "Stuffed Green Peppers I",
+            "Best Chocolate Chip Cookies"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 167,
+          "preference_score": 0.2047685980796814,
+          "who_score": 1.33333333333333
+        },
+        {
+          "courses": [
+            "Guacamole",
+            "Chicken Pot Pie IX",
+            "Banana Crumb Muffins"
+          ],
+          "fsa_score": 10.0,
+          "meal_id": 391,
+          "preference_score": 0.20376695692539215,
+          "who_score": 2.33333333333333
+        },
+        {
+          "courses": [
+            "Ultimate Twice Baked Potatoes",
+            "Chicken Pot Pie IX",
+            "Big Soft Ginger Cookies"
+          ],
+          "fsa_score": 9.33333333333333,
+          "meal_id": 2105,
+          "preference_score": 0.1963023543357849,
+          "who_score": 2.66666666666667
+        }
+      ],
+      "test_ground_truth_meal_ids": [
+        13,
+        53,
+        101,
+        106,
+        167,
+        191,
+        263,
+        280,
+        300,
+        318,
+        335,
+        379,
+        383,
+        391,
+        436,
+        450,
+        452,
+        470,
+        473,
+        524,
+        528,
+        551,
+        567,
+        621,
+        656,
+        658,
+        672,
+        686,
+        691,
+        708,
+        711,
+        717,
+        730,
+        803,
+        846,
+        854,
+        858,
+        925,
+        935,
+        937,
+        995,
+        1005,
+        1018,
+        1019,
+        1022,
+        1147,
+        1169,
+        1228,
+        1299,
+        1391,
+        1401,
+        1413,
+        1434,
+        1477,
+        1519,
+        1528,
+        1569,
+        1623,
+        1651,
+        1703,
+        1715,
+        1716,
+        1726,
+        1728,
+        1756,
+        1761,
+        1768,
+        1771,
+        1790,
+        1801,
+        1818,
+        1866,
+        1898,
+        1956,
+        1959,
+        1973,
+        2004,
+        2023,
+        2064,
+        2102,
+        2122,
+        2201,
+        2222,
+        2232,
+        2284,
+        2289,
+        2318,
+        2421,
+        2482,
+        2520,
+        2597,
+        2613,
+        2634,
+        2690,
+        2730,
+        2810,
+        2811,
+        2833,
+        2875,
+        2936,
+        2942,
+        3013,
+        3050,
+        3065,
+        3162,
+        3181,
+        3322,
+        3375,
+        3532,
+        3675
+      ],
+      "user_id": 252
+    }
+  ],
+  "result_schema_version": 1,
+  "selected_checkpoint": {
+    "path": "checkpoints/neumf/standard.pth",
+    "recreated_by": "scripts/run_neumf.py",
+    "tracked_by_git": false
+  },
+  "selection": {
+    "rule": "highest validation NDCG@10; trial id breaks exact ties",
+    "selected_trial": "standard",
+    "test_evaluations_performed": 1,
+    "trials": [
+      {
+        "best_epoch": 18,
+        "best_validation_score": 0.051674,
+        "checkpoint": "checkpoints/neumf/compact.pth",
+        "config_file": "configs/models/neumf-compact.yaml",
+        "dataset_shape_check": {
+          "train_interactions": 37413,
+          "train_meals": 3810,
+          "users": 1575
+        },
+        "epochs_completed": 20,
+        "hyperparameters": {
+          "dropout_prob": 0.1,
+          "early_stopping_checks": 4,
+          "learning_rate": 0.001,
+          "maximum_epochs": 20,
+          "mf_embedding_size": 32,
+          "mlp_embedding_size": 32,
+          "mlp_hidden_size": [
+            64,
+            32
+          ],
+          "negative_samples_per_positive": 4
+        },
+        "parameter_count": 351073,
+        "trial_id": "compact",
+        "validation": {
+          "ndcg@10": 0.051674,
+          "ndcg@20": 0.062798,
+          "ndcg@5": 0.042672,
+          "recall@10": 0.074981,
+          "recall@20": 0.112521,
+          "recall@5": 0.047909
+        }
+      },
+      {
+        "best_epoch": 18,
+        "best_validation_score": 0.063192,
+        "checkpoint": "checkpoints/neumf/standard.pth",
+        "config_file": "configs/models/neumf-standard.yaml",
+        "dataset_shape_check": {
+          "train_interactions": 37413,
+          "train_meals": 3810,
+          "users": 1575
+        },
+        "epochs_completed": 20,
+        "hyperparameters": {
+          "dropout_prob": 0.1,
+          "early_stopping_checks": 4,
+          "learning_rate": 0.001,
+          "maximum_epochs": 20,
+          "mf_embedding_size": 64,
+          "mlp_embedding_size": 64,
+          "mlp_hidden_size": [
+            128,
+            64
+          ],
+          "negative_samples_per_positive": 4
+        },
+        "parameter_count": 714433,
+        "trial_id": "standard",
+        "validation": {
+          "ndcg@10": 0.063192,
+          "ndcg@20": 0.075671,
+          "ndcg@5": 0.053838,
+          "recall@10": 0.08742,
+          "recall@20": 0.132658,
+          "recall@5": 0.056861
+        }
+      }
+    ]
+  },
+  "test": {
+    "ndcg@10": 0.064976,
+    "ndcg@20": 0.077483,
+    "ndcg@5": 0.058077,
+    "recall@10": 0.08728,
+    "recall@20": 0.131806,
+    "recall@5": 0.064855
+  },
+  "validation": {
+    "ndcg@10": 0.063192,
+    "ndcg@20": 0.075671,
+    "ndcg@5": 0.053838,
+    "recall@10": 0.08742,
+    "recall@20": 0.132658,
+    "recall@5": 0.056861
+  }
+}

@@ -1,0 +1,45 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Notebook and editor state
+.ipynb_checkpoints/
+.vscode/
+.idea/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Raw/processed datasets are recreated by scripts
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Model weights and local experiment trackers
+checkpoints/
+*.ckpt
+*.pth
+*.pt
+wandb/
+mlruns/
+log/
+log_tensorboard/
+
+# Build/test artifacts
+build/
+dist/
+*.egg-info/
+coverage.xml
+.coverage
+
+# OS files
+.DS_Store
+Thumbs.db

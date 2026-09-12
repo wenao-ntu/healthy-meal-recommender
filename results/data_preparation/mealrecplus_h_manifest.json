@@ -1,0 +1,140 @@
+{
+  "counts": {
+    "courses_used_by_meals": 942,
+    "evaluation_exclusions": 13,
+    "meals_catalog": 3817,
+    "meals_seen_in_train": 3810,
+    "test_interactions_original": 4677,
+    "test_interactions_warm": 4673,
+    "train_interactions": 37413,
+    "users": 1575,
+    "valid_interactions_original": 4677,
+    "valid_interactions_warm": 4668
+  },
+  "outputs": {
+    "course_catalog.csv": {
+      "bytes": 446774,
+      "rows": 942,
+      "sha256": "39104cbb0b1073303ff93dcd9df78e7f00962c388136d0c82bc685a79edc4dbb"
+    },
+    "evaluation_exclusions.csv": {
+      "bytes": 345,
+      "rows": 13,
+      "sha256": "116763bd96c310dba462e191fa3187c81fd3795731b4291d9061596fa497eb30"
+    },
+    "meal_catalog.csv": {
+      "bytes": 733391,
+      "rows": 3817,
+      "sha256": "eaa3f8d3c2a2d0b43c961f51bbcfadc5aa14798cbc73feb6e612507227926ce4"
+    },
+    "recbole/mealrecplus_h/mealrecplus_h.test.inter": {
+      "bytes": 39797,
+      "rows": 4673,
+      "sha256": "520e1ed1358788ce9b869215078bb0cac3e2491d8f8affe6dfaf44dba641f247"
+    },
+    "recbole/mealrecplus_h/mealrecplus_h.train.inter": {
+      "bytes": 318508,
+      "rows": 37413,
+      "sha256": "e90e2baeaf601f1afef4262f3f5c01fa8cbe3f7869b882c8867c556deb5934e5"
+    },
+    "recbole/mealrecplus_h/mealrecplus_h.valid.inter": {
+      "bytes": 39810,
+      "rows": 4668,
+      "sha256": "1c6e79d0a19588ff68d598b54ed33a28ca91a114dcc3c33578556892887a02bc"
+    },
+    "user_health_train.csv": {
+      "bytes": 57303,
+      "rows": 1575,
+      "sha256": "91aebca8172d3c0018fb4d5cb006774807f8ccf99caed17932602a9ca6cc0137"
+    }
+  },
+  "policies": {
+    "evaluation_policy": "warm-start meals only; exclusions listed explicitly",
+    "metadata_scope": "only courses used by a meal; reviews and cooking text excluded",
+    "official_split_preserved": true,
+    "source_user_mapping_used": false,
+    "timestamps_available_for_meal_interactions": false,
+    "user_health_baseline": "mean meal score from training interactions only"
+  },
+  "preparation_schema_version": 1,
+  "reproducibility": {
+    "encoding": "UTF-8",
+    "generation_timestamp_included": false,
+    "line_ending": "LF",
+    "stable_sort": "user_id then meal_id; entity tables by numeric id"
+  },
+  "source": {
+    "commit": "8bd7d7d7effb505be4a7d2074b28abad802fe0f7",
+    "input_artifacts": {
+      "MealRec+/MealRec+H/course_category.txt": {
+        "bytes": 80715,
+        "sha256": "2f7d41b247da8f210431f60197f4290c820962879ec8234f355ecaad22ab15d3"
+      },
+      "MealRec+/MealRec+H/healthiness/course_fsa.txt": {
+        "bytes": 25319,
+        "sha256": "e134cc588faf8a703f8a901ce90cfb7beda03b72bbf5a0da12d2b305395569f9"
+      },
+      "MealRec+/MealRec+H/healthiness/course_who.txt": {
+        "bytes": 21840,
+        "sha256": "f49213da58209adb5ad4f5aba72a7f170b7645755a13105d5e5f266e47d3baa6"
+      },
+      "MealRec+/MealRec+H/healthiness/meal_fsa.txt": {
+        "bytes": 55437,
+        "sha256": "dd6dff94e2333689ce65611decc165cc9e2c04e15763a613b9dd093b48691583"
+      },
+      "MealRec+/MealRec+H/healthiness/meal_who.txt": {
+        "bytes": 57037,
+        "sha256": "67fff069f13958c8081a672b2879ddd39d18c62006ce4d83692e2963c9ba0830"
+      },
+      "MealRec+/MealRec+H/healthiness/user_fsa.txt": {
+        "bytes": 26093,
+        "sha256": "e556311fa1c2b42788afca3184cf749543ced7045bbbc6842a8c72f43917524d"
+      },
+      "MealRec+/MealRec+H/healthiness/user_who.txt": {
+        "bytes": 27571,
+        "sha256": "7f4814227a4b01f9b8446bacb61023ff6733d6c88802570bfe26634fad48726b"
+      },
+      "MealRec+/MealRec+H/meal_course.txt": {
+        "bytes": 111738,
+        "sha256": "3394f312f7f49d63ce4bbf87447511b1f650980046ded7dbe447e364013b403d"
+      },
+      "MealRec+/MealRec+H/meta_data/course.zip": {
+        "bytes": 195052658,
+        "sha256": "00f10920166e21bbf2a581c835027cc413c7bc96c79053e4a8cfe0774dbff7ce"
+      },
+      "MealRec+/MealRec+H/meta_data/course2index.txt": {
+        "bytes": 87845,
+        "sha256": "ee75934e73fa3971f46c6cc63a5ad4e6ecb8e261d83788f6b904aece90a2cc25"
+      },
+      "MealRec+/MealRec+H/user_meal_test.txt": {
+        "bytes": 44483,
+        "sha256": "9021161c403423ef2cbd0d8365f97536be9648b1c7ed7de8f1d95116a1141e58"
+      },
+      "MealRec+/MealRec+H/user_meal_train.txt": {
+        "bytes": 355893,
+        "sha256": "c996268b4ac1beefe7f2749c5e93d1c94e88df621f9068e4ebd75d92555862cb"
+      },
+      "MealRec+/MealRec+H/user_meal_tune.txt": {
+        "bytes": 44534,
+        "sha256": "4ccc5e83fa0d6fdafe17e600da3c890409377903fe8c9aea06bf295a4de71f04"
+      }
+    },
+    "repository": "https://github.com/WUT-IDEA/MealRecPlus",
+    "variant": "MealRec+H"
+  },
+  "validation": {
+    "all_evaluation_meals_seen_in_train": true,
+    "courses_per_meal": 3,
+    "courses_with_missing_nutrition": 5,
+    "max_user_fsa_baseline_error": 1.7763568394002505e-15,
+    "max_user_who_baseline_error": 4.440892098500626e-16,
+    "meals_with_missing_nutrition": 27,
+    "required_categories_per_meal": [
+      "appetizer",
+      "main-dish",
+      "dessert"
+    ],
+    "split_overlap_rows": 0,
+    "zero_without_unit_treated_as_missing": true
+  }
+}
